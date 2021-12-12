@@ -17,7 +17,7 @@ public class Notification {
     private User userTo;
 
     @Column
-    private User userFromId;
+    private User userFrom;
 
     @Column(nullable = false)
     private String title;

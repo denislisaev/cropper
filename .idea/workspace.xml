@@ -4,15 +4,13 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="e87fd43f-9eb4-439a-b836-6b5c2ee6a83a" name="Changes" comment="Start project">
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/dlisaev/cropper/entity/Crop.java" afterDir="false" />
+    <list default="true" id="e87fd43f-9eb4-439a-b836-6b5c2ee6a83a" name="Changes" comment="Fix#1">
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/dlisaev/cropper/repository/CropRepository.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/dlisaev/cropper/repository/NotificationRepository.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/dlisaev/cropper/repository/OfferRepository.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/dlisaev/cropper/repository/UserRepository.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/pom.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/dlisaev/cropper/entity/Notification.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/dlisaev/cropper/entity/Notification.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/dlisaev/cropper/entity/Offer.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/dlisaev/cropper/entity/Offer.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/dlisaev/cropper/entity/ProfileImage.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/dlisaev/cropper/entity/User.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/dlisaev/cropper/entity/User.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/dlisaev/cropper/entity/enums/Crops.java" beforeDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -24,6 +22,7 @@
       <list>
         <option value="Enum" />
         <option value="Class" />
+        <option value="Interface" />
       </list>
     </option>
   </component>
@@ -81,6 +80,14 @@
       <option name="presentableId" value="Default" />
       <updated>1639333995927</updated>
     </task>
+    <task id="LOCAL-00001" summary="Fix#1">
+      <created>1639346694279</created>
+      <option name="number" value="00001" />
+      <option name="presentableId" value="LOCAL-00001" />
+      <option name="project" value="LOCAL" />
+      <updated>1639346694279</updated>
+    </task>
+    <option name="localTasksCounter" value="2" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -96,6 +103,7 @@
   </component>
   <component name="VcsManagerConfiguration">
     <MESSAGE value="Start project" />
-    <option name="LAST_COMMIT_MESSAGE" value="Start project" />
+    <MESSAGE value="Fix#1" />
+    <option name="LAST_COMMIT_MESSAGE" value="Fix#1" />
   </component>
 </project>
