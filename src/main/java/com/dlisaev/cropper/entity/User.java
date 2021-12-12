@@ -3,7 +3,6 @@ package com.dlisaev.cropper.entity;
 import com.dlisaev.cropper.entity.enums.ERole;
 import com.fasterxml.jackson.annotation.JsonFormat;
 import lombok.Data;
-import org.aspectj.weaver.ast.Not;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
 
@@ -18,20 +17,23 @@ public class User implements UserDetails{
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
+    @Column(unique = true, nullable = false)
+    private String username;
+
+    @Column(unique = true)
+    private String email;
+
+    @Column(length = 3000)
+    private String password;
+
     @Column(nullable = false)
     private String firstname;
 
     @Column(nullable = false)
     private String lastname;
 
-    @Column(unique = true, nullable = false)
-    private String username;
-
-    @Column(length = 3000)
-    private String password;
-
-    @Column(unique = true)
-    private String email;
+    @Column(nullable = true)
+    private String location;
 
     @Column(updatable = false)
     @JsonFormat(pattern = "yyyy-mm-dd HH:mm:ss")
@@ -40,7 +42,7 @@ public class User implements UserDetails{
     @OneToMany(cascade = CascadeType.ALL, fetch = FetchType.LAZY, mappedBy = "user", orphanRemoval = true)
     private List<Offer> offers = new ArrayList<>();
 
-    @OneToMany(cascade = CascadeType.ALL, fetch = FetchType.LAZY, mappedBy = "user", orphanRemoval = true)
+    @OneToMany(cascade = CascadeType.ALL, fetch = FetchType.LAZY, mappedBy = "userTo", orphanRemoval = true)
     private List<Notification> notifications = new ArrayList<>();
 
     @ElementCollection(targetClass = ERole.class)
