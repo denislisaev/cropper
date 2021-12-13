@@ -14,6 +14,5 @@ public class UserDTO {
     private String lastname;
     @NotEmpty
     private String location;
-    private String info;
 }
 

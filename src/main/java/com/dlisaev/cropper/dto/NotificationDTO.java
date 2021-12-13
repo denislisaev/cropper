@@ -8,8 +8,6 @@ import javax.validation.constraints.NotEmpty;
 public class NotificationDTO {
     @NotEmpty
     private String usernameTo;
-
-    private String usernameFrom;
     @NotEmpty
     private String title;
     @NotEmpty

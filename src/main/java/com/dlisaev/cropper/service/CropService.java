@@ -11,6 +11,7 @@ import com.dlisaev.cropper.repository.CropRepository;
 import com.dlisaev.cropper.repository.NotificationRepository;
 import com.dlisaev.cropper.repository.OfferRepository;
 import com.dlisaev.cropper.repository.UserRepository;
+import com.dlisaev.cropper.service.interfaces.CropServiceInterface;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -21,7 +22,7 @@ import java.security.Principal;
 import java.util.List;
 
 @Service
-public class CropService {
+public class CropService implements CropServiceInterface {
     public static final Logger LOG = LoggerFactory.getLogger(CropService.class);
 
     private final CropRepository cropRepository;

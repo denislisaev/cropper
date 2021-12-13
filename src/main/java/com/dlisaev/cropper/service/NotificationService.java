@@ -10,6 +10,7 @@ import com.dlisaev.cropper.repository.CropRepository;
 import com.dlisaev.cropper.repository.NotificationRepository;
 import com.dlisaev.cropper.repository.OfferRepository;
 import com.dlisaev.cropper.repository.UserRepository;
+import com.dlisaev.cropper.service.interfaces.NotificationServiceInterface;
 import org.aspectj.weaver.ast.Not;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -21,7 +22,7 @@ import java.security.Principal;
 import java.util.List;
 
 @Service
-public class NotificationService {
+public class NotificationService implements NotificationServiceInterface {
     public static final Logger LOG = LoggerFactory.getLogger(NotificationService.class);
 
     private final UserRepository userRepository;
@@ -51,7 +52,7 @@ public class NotificationService {
 
             notification.setUserFrom(user);
             User userTo = userRepository.findUserByUsername(notificationDTO.getUsernameTo())
-                    .orElseThrow(() -> new UsernameNotFoundException("User-destination not found with username" + notificationDTO.getUsernameFrom()));
+                    .orElseThrow(() -> new UsernameNotFoundException("User-destination not found with username" + notificationDTO.getUsernameTo()));
             notification.setUserTo(userTo);
             notification.setTitle(notificationDTO.getTitle());
             notification.setMessage(notification.getMessage());
@@ -68,7 +69,7 @@ public class NotificationService {
     public Notification readNotification(Principal principal, Long notificationId){
         User user = getUserByPrincipal(principal);
 
-        Notification notification = notificationRepository.findNotificationByIdAndUser(notificationId, user)
+        Notification notification = notificationRepository.findNotificationByIdAndUserTo(notificationId, user)
                 .orElseThrow(() -> new NotificationNotFoundException("Notification not found with id: " + notificationId));
 
         notification.setHasRead(true);
@@ -80,7 +81,7 @@ public class NotificationService {
     public Notification updateNotification(NotificationDTO notificationDTO, Principal principal, Long notificationId){
         User user = getUserByPrincipal(principal);
 
-        Notification notification = notificationRepository.findNotificationByIdAndUser(notificationId, user)
+        Notification notification = notificationRepository.findNotificationByIdAndUserTo(notificationId, user)
                 .orElseThrow(() -> new NotificationNotFoundException("Notification not found with id: " + notificationId));
 
         notification.setMessage(notificationDTO.getMessage());

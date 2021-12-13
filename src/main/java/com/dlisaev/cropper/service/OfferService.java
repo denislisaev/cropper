@@ -9,6 +9,7 @@ import com.dlisaev.cropper.exceptions.OfferNotFoundException;
 import com.dlisaev.cropper.repository.CropRepository;
 import com.dlisaev.cropper.repository.OfferRepository;
 import com.dlisaev.cropper.repository.UserRepository;
+import com.dlisaev.cropper.service.interfaces.OfferServiceInterface;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -19,7 +20,7 @@ import java.security.Principal;
 import java.util.List;
 
 @Service
-public class OfferService {
+public class OfferService implements OfferServiceInterface {
     public static final Logger LOG = LoggerFactory.getLogger(OfferService.class);
 
     private final CropRepository cropRepository;
@@ -56,7 +57,7 @@ public class OfferService {
         return offerRepository.findAllByUserOrderByCreateDate(user);
     }
 
-    public Offer createPost(OfferDTO offerDto, Principal principal){
+    public Offer createOffer(OfferDTO offerDto, Principal principal){
         User user = getUserByPrincipal(principal);
         Offer offer = new Offer();
 

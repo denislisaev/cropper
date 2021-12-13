@@ -7,6 +7,7 @@ import com.dlisaev.cropper.exceptions.UserAlreadyException;
 import com.dlisaev.cropper.payload.request.SignUpRequest;
 import com.dlisaev.cropper.repository.UserRepository;
 import com.dlisaev.cropper.security.jwt.JWTProvider;
+import com.dlisaev.cropper.service.interfaces.UserServiceInterface;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -17,7 +18,7 @@ import org.springframework.stereotype.Service;
 import java.security.Principal;
 
 @Service
-public class UserService {
+public class UserService implements UserServiceInterface {
     public static final Logger LOG = LoggerFactory.getLogger(JWTProvider.class);
 
 

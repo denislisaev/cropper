@@ -40,7 +40,14 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
                 .and()
                 //любой запрос приходящий на "/api/auth/" - разрешать
                 .authorizeRequests()
-                .antMatchers(SecurityConstants.SIGN_UP_URLS).permitAll()
+                .antMatchers(SecurityConstants.SIGN_UP_URLS,
+                        //"/api/**",
+                        "/swagger-ui.html",
+                        "/swagger-ui/**",
+                        "/swagger-resources/**",
+                        "/v2/api-docs",
+                        "/webjars/**"
+                ).permitAll()
                 .anyRequest().authenticated();
 
         http.addFilterBefore(jwtAuthenticationFilter(), UsernamePasswordAuthenticationFilter.class);
@@ -56,7 +63,7 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
     @Override
     @Bean(BeanIds.AUTHENTICATION_MANAGER)
     public AuthenticationManager authenticationManager() throws Exception{
-        return super.authenticationManagerBean();
+        return super.authenticationManager();
     }
 
     @Bean
