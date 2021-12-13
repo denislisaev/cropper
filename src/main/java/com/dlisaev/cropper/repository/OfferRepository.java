@@ -13,6 +13,8 @@ import java.util.Optional;
 @Repository
 public interface OfferRepository extends JpaRepository<Offer, Long> {
     Optional<Offer> findOfferById(Long id);
+    Optional<Offer> findOfferByIdAndUser(Long id, User user);
+    List<Offer> findAllByOrderByCreateDate();
     List<Offer> findAllByUserOrderByCreateDate(User user);
     List<Offer> findAllByUserAndTypeOfferOrderByCreateDate(User user, Boolean typeOffer);
     List<Offer> findAllByCropOrderByCreateDate(Crop crop);

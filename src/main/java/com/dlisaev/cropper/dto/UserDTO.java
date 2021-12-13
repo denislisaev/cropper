@@ -1,4 +1,4 @@
-package com.dlisaev.cropper.annotations.dto;
+package com.dlisaev.cropper.dto;
 
 import lombok.Data;
 

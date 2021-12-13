@@ -4,21 +4,24 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="e87fd43f-9eb4-439a-b836-6b5c2ee6a83a" name="Changes" comment="Added security">
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/dlisaev/cropper/annotations/PasswordMatches.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/dlisaev/cropper/annotations/ValidEmail.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/dlisaev/cropper/annotations/dto/UserDTO.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/dlisaev/cropper/controllers/AuthController.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/dlisaev/cropper/exceptions/UserAlreadyException.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/dlisaev/cropper/payload/request/LoginRequest.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/dlisaev/cropper/payload/request/SignUpRequest.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/dlisaev/cropper/payload/response/JWTSuccessResponse.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/dlisaev/cropper/payload/response/MessageResponse.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/dlisaev/cropper/service/UserService.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/dlisaev/cropper/validators/EmailValidator.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/dlisaev/cropper/validators/PasswordMatchesValidator.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/dlisaev/cropper/validators/ResponseErrorValidator.java" afterDir="false" />
+    <list default="true" id="e87fd43f-9eb4-439a-b836-6b5c2ee6a83a" name="Changes" comment="Auth controller">
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/dlisaev/cropper/dto/NotificationDTO.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/dlisaev/cropper/dto/OfferDTO.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/dlisaev/cropper/exceptions/CropAlreadyExist.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/dlisaev/cropper/exceptions/CropNotFoundException.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/dlisaev/cropper/exceptions/NotificationCantBeSendForYourself.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/dlisaev/cropper/exceptions/NotificationNotFoundException.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/dlisaev/cropper/exceptions/OfferNotFoundException.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/dlisaev/cropper/service/CropService.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/dlisaev/cropper/service/NotificationService.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/dlisaev/cropper/service/OfferService.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/dlisaev/cropper/annotations/dto/UserDTO.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/dlisaev/cropper/dto/UserDTO.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/dlisaev/cropper/entity/Crop.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/dlisaev/cropper/entity/Crop.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/dlisaev/cropper/repository/CropRepository.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/dlisaev/cropper/repository/CropRepository.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/dlisaev/cropper/repository/NotificationRepository.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/dlisaev/cropper/repository/NotificationRepository.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/dlisaev/cropper/repository/OfferRepository.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/dlisaev/cropper/repository/OfferRepository.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/dlisaev/cropper/service/UserService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/dlisaev/cropper/service/UserService.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -109,7 +112,14 @@
       <option name="project" value="LOCAL" />
       <updated>1639389724409</updated>
     </task>
-    <option name="localTasksCounter" value="3" />
+    <task id="LOCAL-00003" summary="Auth controller">
+      <created>1639397748123</created>
+      <option name="number" value="00003" />
+      <option name="presentableId" value="LOCAL-00003" />
+      <option name="project" value="LOCAL" />
+      <updated>1639397748123</updated>
+    </task>
+    <option name="localTasksCounter" value="4" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -127,6 +137,7 @@
     <MESSAGE value="Start project" />
     <MESSAGE value="Fix#1" />
     <MESSAGE value="Added security" />
-    <option name="LAST_COMMIT_MESSAGE" value="Added security" />
+    <MESSAGE value="Auth controller" />
+    <option name="LAST_COMMIT_MESSAGE" value="Auth controller" />
   </component>
 </project>
