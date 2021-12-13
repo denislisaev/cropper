@@ -5,12 +5,16 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="e87fd43f-9eb4-439a-b836-6b5c2ee6a83a" name="Changes" comment="Fix#1">
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/dlisaev/cropper/repository/CropRepository.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/dlisaev/cropper/repository/NotificationRepository.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/dlisaev/cropper/repository/OfferRepository.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/dlisaev/cropper/repository/UserRepository.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/dlisaev/cropper/payload/response/InvalidLoginResponse.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/dlisaev/cropper/security/SecurityConstants.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/dlisaev/cropper/security/WebSecurityConfig.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/dlisaev/cropper/security/jwt/JWTAuthenticationEntryPoint.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/dlisaev/cropper/security/jwt/JWTAuthenticationFilter.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/dlisaev/cropper/security/jwt/JWTProvider.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/dlisaev/cropper/service/ConfigUserDetailsService.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/dlisaev/cropper/entity/Notification.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/dlisaev/cropper/entity/Notification.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/pom.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/dlisaev/cropper/repository/OfferRepository.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/dlisaev/cropper/repository/OfferRepository.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -21,8 +25,8 @@
     <option name="RECENT_TEMPLATES">
       <list>
         <option value="Enum" />
-        <option value="Class" />
         <option value="Interface" />
+        <option value="Class" />
       </list>
     </option>
   </component>
@@ -49,7 +53,12 @@
   <component name="PropertiesComponent">
     <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
     <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/../../java/task1/instogramm" />
+  </component>
+  <component name="RecentsManager">
+    <key name="CreateClassDialog.RecentsKey">
+      <recent name="com.dlisaev.cropper.security.jwt" />
+    </key>
   </component>
   <component name="RunManager">
     <configuration name="CropperApplication" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
