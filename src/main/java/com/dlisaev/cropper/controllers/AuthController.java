@@ -9,6 +9,7 @@ import com.dlisaev.cropper.security.jwt.JWTProvider;
 import com.dlisaev.cropper.service.UserService;
 import com.dlisaev.cropper.validators.ResponseErrorValidator;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.security.authentication.AuthenticationManager;
@@ -43,27 +44,32 @@ public class AuthController {
     public ResponseEntity<Object> registerUser(@Valid @RequestBody SignUpRequest signUpRequest, BindingResult bindingResult){
         ResponseEntity<Object> listErrors = responseErrorValidator.mappedValidatorService(bindingResult);
 
-        if(!ObjectUtils.isEmpty(listErrors)) return listErrors;
-
+        if(!ObjectUtils.isEmpty(listErrors)) {
+            return listErrors;
+        }
         userService.createUser(signUpRequest);
         return ResponseEntity.ok(new MessageResponse("Registration successfully completed"));
     }
 
     @PostMapping("/signin")
     public ResponseEntity<Object> authenticateUser(@Valid @RequestBody LoginRequest loginRequest, BindingResult bindingResult){
-        //System.out.println(loginRequest);
         ResponseEntity<Object> listErrors = responseErrorValidator.mappedValidatorService(bindingResult);
-        System.out.println(listErrors);
 
-        if(!ObjectUtils.isEmpty(listErrors)) return listErrors;
+        if(!ObjectUtils.isEmpty(listErrors)) {
+            return listErrors;
+        }
 
-        Authentication authentication = authenticationManager.authenticate(
-                new UsernamePasswordAuthenticationToken(loginRequest.getUsername(), loginRequest.getPassword()));
-        SecurityContextHolder.getContext().setAuthentication(authentication);
+        try {
+            Authentication authentication = authenticationManager.authenticate(
+                    new UsernamePasswordAuthenticationToken(loginRequest.getUsername(), loginRequest.getPassword()));
+            SecurityContextHolder.getContext().setAuthentication(authentication);
 
-        String jwt = SecurityConstants.TOKEN_PREFIX + jwtProvider.generateToken(authentication);
+            String jwt = SecurityConstants.TOKEN_PREFIX + jwtProvider.generateToken(authentication);
 
-        return ResponseEntity.ok(new JWTSuccessResponse(true, jwt));
+            return ResponseEntity.ok(new JWTSuccessResponse(true, jwt));
+        } catch (Exception e){
+            return new ResponseEntity<>(new MessageResponse("Неверный логин или пароль!"), HttpStatus.BAD_REQUEST);
+        }
 
     }
 }
