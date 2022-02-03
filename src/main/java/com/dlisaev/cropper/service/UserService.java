@@ -16,6 +16,7 @@ import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Service;
 
 import java.security.Principal;
+import java.util.List;
 
 @Service
 public class UserService implements UserServiceInterface {
@@ -46,7 +47,10 @@ public class UserService implements UserServiceInterface {
             return userRepository.save(user);
         } catch (Exception e) {
             LOG.error("Error registration {}", e.getMessage());
-            throw new UserAlreadyException("The user " + user.getEmail() + "already exist!");
+            boolean isEmailUsed = e.getCause().getCause().getMessage().contains(user.getEmail());
+            boolean isUsernamelUsed = e.getCause().getCause().getMessage().contains(user.getUsername());
+
+            throw new UserAlreadyException("The user already exist!", isEmailUsed, isUsernamelUsed);
         }
     }
 
@@ -59,10 +63,11 @@ public class UserService implements UserServiceInterface {
         return userRepository.save(user);
     }
 
+
     public User getUserByPrincipal(Principal principal){
         String username = principal.getName();
         return userRepository.findUserByUsername(username)
-                .orElseThrow(() -> new UsernameNotFoundException("User not found with username" + username));
+                .orElseThrow(() -> new UsernameNotFoundException("Пользователь не найден" + username));
     }
 
     public User getCurrentUser(Principal principal){
@@ -70,6 +75,15 @@ public class UserService implements UserServiceInterface {
     }
 
     public User getUserById(Long userId){
-        return userRepository.findUserById(userId).orElseThrow(()-> new UsernameNotFoundException("User not found"));
+        return userRepository.findUserById(userId).orElseThrow(()-> new UsernameNotFoundException("Пользователь не найден"));
+    }
+
+    public void deleteUserByUsername(String username){
+        User user =  userRepository.findUserByUsername(username).orElseThrow(()-> new UsernameNotFoundException("Пользователь не найден"));
+        userRepository.delete(user);
+    }
+
+    public List<User> getUsers(){
+        return userRepository.findAll();
     }
 }

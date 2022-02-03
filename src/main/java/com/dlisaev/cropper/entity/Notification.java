@@ -16,7 +16,8 @@ public class Notification {
     @ManyToOne(fetch = FetchType.LAZY)
     private User userTo;
 
-    @Column
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn
     private User userFrom;
 
     @Column(nullable = false)

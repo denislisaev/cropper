@@ -1,7 +1,6 @@
 package com.dlisaev.cropper.repository;
 
 import com.dlisaev.cropper.entity.Crop;
-import com.dlisaev.cropper.entity.Notification;
 import com.dlisaev.cropper.entity.Offer;
 import com.dlisaev.cropper.entity.User;
 import org.springframework.data.jpa.repository.JpaRepository;

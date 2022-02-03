@@ -1,5 +1,6 @@
 package com.dlisaev.cropper.controllers;
 
+import com.dlisaev.cropper.exceptions.UserAlreadyException;
 import com.dlisaev.cropper.payload.request.LoginRequest;
 import com.dlisaev.cropper.payload.request.SignUpRequest;
 import com.dlisaev.cropper.payload.response.JWTSuccessResponse;
@@ -47,7 +48,19 @@ public class AuthController {
         if(!ObjectUtils.isEmpty(listErrors)) {
             return listErrors;
         }
-        userService.createUser(signUpRequest);
+        try{
+            userService.createUser(signUpRequest);
+        } catch (UserAlreadyException e){
+            String responce = "";
+            if (e.isEmailUsed() ){
+                responce += "Email уже занят \n";
+            }
+            if (e.isUsernameUsed()){
+                responce += "Логин уже занят \n";
+            }
+            return new ResponseEntity<>(new MessageResponse(responce), HttpStatus.BAD_REQUEST);
+        }
+
         return ResponseEntity.ok(new MessageResponse("Registration successfully completed"));
     }
 

@@ -16,9 +16,6 @@ public class Crop {
     @Column(nullable = false, unique = true)
     private String name;
 
-    @OneToMany(cascade = CascadeType.ALL, fetch = FetchType.LAZY, mappedBy = "crop", orphanRemoval = true)
-    private List<Offer> offers = new ArrayList<>();
-
     public Crop(){
 
     }

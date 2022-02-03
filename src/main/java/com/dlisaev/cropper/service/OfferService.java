@@ -1,7 +1,6 @@
 package com.dlisaev.cropper.service;
 
 import com.dlisaev.cropper.dto.OfferDTO;
-import com.dlisaev.cropper.dto.UserDTO;
 import com.dlisaev.cropper.entity.Offer;
 import com.dlisaev.cropper.entity.User;
 import com.dlisaev.cropper.exceptions.CropNotFoundException;
@@ -52,8 +51,18 @@ public class OfferService implements OfferServiceInterface {
                 .orElseThrow(()-> new OfferNotFoundException("Offer not found for username: " + user.getEmail()));
     }
 
+    public Offer getOfferByIdAdmin(Long offerId){
+        return offerRepository.findOfferById(offerId)
+                .orElseThrow(()-> new OfferNotFoundException("Offer not found for id: " + offerId));
+    }
+
     public List<Offer> getAllOffersForUser(Principal principal){
         User user = getUserByPrincipal(principal);
+        return offerRepository.findAllByUserOrderByCreateDate(user);
+    }
+
+    public List<Offer> getAllOffersForUsername(String username){
+        User user = userRepository.findUserByUsername(username).orElseThrow(()->new UsernameNotFoundException("User with username " + username + " not found"));
         return offerRepository.findAllByUserOrderByCreateDate(user);
     }
 
@@ -99,4 +108,8 @@ public class OfferService implements OfferServiceInterface {
                 .orElseThrow(() -> new UsernameNotFoundException("User not found with username: " + username));
     }
 
+    public void deleteOfferAdmin(long offerId) {
+        Offer offer = getOfferByIdAdmin(offerId);
+        offerRepository.delete(offer);
+    }
 }

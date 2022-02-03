@@ -1,10 +1,13 @@
 package com.dlisaev.cropper.controllers;
 
 import com.dlisaev.cropper.dto.NotificationDTO;
+import com.dlisaev.cropper.dto.NotificationInputDTO;
+import com.dlisaev.cropper.dto.PresentNotificationDTO;
 import com.dlisaev.cropper.entity.Notification;
 import com.dlisaev.cropper.facade.NotificationFacade;
 import com.dlisaev.cropper.payload.response.MessageResponse;
 import com.dlisaev.cropper.service.NotificationService;
+import com.dlisaev.cropper.service.UserService;
 import com.dlisaev.cropper.validators.ResponseErrorValidator;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -25,12 +28,14 @@ public class NotificationController {
     private NotificationFacade notificationFacade;
     private NotificationService notificationService;
     private ResponseErrorValidator responseErrorValidator;
+    private UserService userService;
 
     @Autowired
-    public NotificationController(NotificationFacade NotificationFacade, NotificationService NotificationService, ResponseErrorValidator responseErrorValidator) {
+    public NotificationController(NotificationFacade NotificationFacade, NotificationService NotificationService, ResponseErrorValidator responseErrorValidator, UserService userService) {
         this.notificationFacade = NotificationFacade;
         this.notificationService = NotificationService;
         this.responseErrorValidator = responseErrorValidator;
+        this.userService = userService;
     }
 
     @PostMapping("/create")
@@ -45,14 +50,35 @@ public class NotificationController {
     }
 
 
-    @GetMapping("/user/notifications")
-    public ResponseEntity<List<NotificationDTO>> getAllNotificationsForUser(Principal principal){
-        List<NotificationDTO> notificationDTOList = notificationService.getAllNotificationsForUser(principal)
+    @GetMapping("/notifications/{username}")
+    public ResponseEntity<List<NotificationInputDTO>> getAllNotificationsForUser(@PathVariable("username") String username, Principal principal){
+        List<NotificationInputDTO> notificationDTOList = notificationService.getAllNotificationsForUserToUser(principal, username)
                 .stream()
-                .map(notificationFacade::notificationToNotificationDTO)
+                .map(notificationFacade::notificationToNotificationInputDTO)
                 .collect(Collectors.toList());
 
-        return  new ResponseEntity<>(notificationDTOList, HttpStatus.OK);
+        return new ResponseEntity<>(notificationDTOList, HttpStatus.OK);
+    }
+
+    @GetMapping("/user/notifications/present")
+    public ResponseEntity<List<PresentNotificationDTO>> getAllNotificationsUsernamesForUser(Principal principal){
+        List<PresentNotificationDTO> presentNotificationDTOList = notificationService.getPresentNotificationsForUser(principal)
+                .stream()
+                .map(notificationFacade::notificationToPresentNotificationDTO)
+                .collect(Collectors.toList());
+
+        for (PresentNotificationDTO dto : presentNotificationDTOList){
+            if (!dto.getUsernameFrom().equals(userService.getUserByPrincipal(principal).getUsername())){
+                dto.setUsername(dto.getUsernameFrom());
+            } else {
+                if (!dto.getUsernameTo().equals(userService.getUserByPrincipal(principal).getUsername())){
+                    dto.setUsername(dto.getUsernameTo());
+                }
+            }
+        }
+
+
+        return new ResponseEntity<>(presentNotificationDTOList, HttpStatus.OK);
     }
 
     @PostMapping("/{notificationId}/delete")

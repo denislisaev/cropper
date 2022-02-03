@@ -2,10 +2,7 @@ package com.dlisaev.cropper.service.interfaces;
 
 import com.dlisaev.cropper.dto.UserDTO;
 import com.dlisaev.cropper.entity.User;
-import com.dlisaev.cropper.entity.enums.ERole;
-import com.dlisaev.cropper.exceptions.UserAlreadyException;
 import com.dlisaev.cropper.payload.request.SignUpRequest;
-import org.springframework.security.core.userdetails.UsernameNotFoundException;
 
 import java.security.Principal;
 

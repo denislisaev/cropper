@@ -3,6 +3,7 @@ package com.dlisaev.cropper.dto;
 import lombok.Data;
 
 import javax.validation.constraints.NotEmpty;
+import java.time.LocalDateTime;
 
 @Data
 public class UserDTO {
@@ -18,5 +19,7 @@ public class UserDTO {
     private String lastname;
     @NotEmpty
     private String location;
+
+    private LocalDateTime createDate;
 }
 

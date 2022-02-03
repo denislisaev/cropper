@@ -9,6 +9,7 @@ import javax.validation.constraints.NotNull;
 
 @Data
 public class OfferDTO {
+    private Long id;
     @NotEmpty
     private String username;
     @NotEmpty
@@ -21,6 +22,10 @@ public class OfferDTO {
     @NotNull
     @Column(nullable = true)
     private Integer pricePerTon; //в рублях
+
+    private String location;
+
+    private String date;
 
     @Column(columnDefinition = "text")
     private String info;
