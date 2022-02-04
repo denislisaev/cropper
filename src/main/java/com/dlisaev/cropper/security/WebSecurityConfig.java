@@ -41,13 +41,13 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
                 .and()
                 //любой запрос приходящий на "/api/auth/" - разрешать
                 .authorizeRequests()
-                .antMatchers(SecurityConstants.SIGN_UP_URLS,
+                .antMatchers(SecurityConstants.SIGN_UP_URLS
                         //"/api/**",
-                        "/swagger-ui.html",
-                        "/swagger-ui/**",
-                        "/swagger-resources/**",
-                        "/v2/api-docs",
-                        "/webjars/**"
+//                        "/swagger-ui.html",
+//                        "/swagger-ui/**",
+//                        "/swagger-resources/**",
+//                        "/v2/api-docs",
+//                        "/webjars/**"
                 ).permitAll()
                 .anyRequest().authenticated();
 

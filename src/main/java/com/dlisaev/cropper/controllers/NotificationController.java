@@ -41,6 +41,8 @@ public class NotificationController {
     @PostMapping("/create")
     public ResponseEntity<Object> createNotification (@Valid @RequestBody NotificationDTO notificationDTO, BindingResult bindingResult, Principal principal){
         ResponseEntity<Object> listErrors = responseErrorValidator.mappedValidatorService(bindingResult);
+        if (userService.getUserByPrincipal(principal).getUsername().equals(notificationDTO.getUsernameTo()))
+            return new ResponseEntity<>(new MessageResponse("Нельзя отправлять сообщения самому себе!"), HttpStatus.BAD_REQUEST);
         if (!ObjectUtils.isEmpty(listErrors)) return listErrors;
 
         Notification notification = notificationService.createNotification(notificationDTO, principal);

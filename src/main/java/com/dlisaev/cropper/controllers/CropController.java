@@ -2,6 +2,7 @@ package com.dlisaev.cropper.controllers;
 
 import com.dlisaev.cropper.entity.Crop;
 import com.dlisaev.cropper.entity.enums.ERole;
+import com.dlisaev.cropper.exceptions.CropAlreadyExist;
 import com.dlisaev.cropper.payload.response.MessageResponse;
 import com.dlisaev.cropper.service.CropService;
 import com.dlisaev.cropper.service.UserService;
@@ -36,13 +37,14 @@ public class CropController {
     @PostMapping("/create")
     public ResponseEntity<Object> createCrop (@Valid @RequestBody String cropName, BindingResult bindingResult, Principal principal){
         if (this.userService.getUserByPrincipal(principal).getRoles().contains(ERole.ROLE_ADMIN)){
-            System.out.println("Добавление культуры");
             ResponseEntity<Object> listErrors = responseErrorValidator.mappedValidatorService(bindingResult);
             if (!ObjectUtils.isEmpty(listErrors)) return listErrors;
-
-            Crop crop = cropService.createCrop(cropName);
-
-            return new ResponseEntity<>(crop, HttpStatus.OK);
+            try{
+                Crop crop = cropService.createCrop(cropName);
+                return new ResponseEntity<>(crop, HttpStatus.OK);
+            } catch (CropAlreadyExist ex){
+                return new ResponseEntity<>(new MessageResponse("Культура уже существует!"), HttpStatus.BAD_REQUEST);
+            }
         }
         return new ResponseEntity<>(new MessageResponse("Недостаточно прав!"), HttpStatus.BAD_REQUEST);
     }

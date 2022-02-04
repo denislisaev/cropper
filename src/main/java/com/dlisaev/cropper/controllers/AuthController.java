@@ -61,7 +61,7 @@ public class AuthController {
             return new ResponseEntity<>(new MessageResponse(responce), HttpStatus.BAD_REQUEST);
         }
 
-        return ResponseEntity.ok(new MessageResponse("Registration successfully completed"));
+        return ResponseEntity.ok(new MessageResponse("Регистрация успешно завершена"));
     }
 
     @PostMapping("/signin")

@@ -70,31 +70,6 @@ public class OfferController {
         return new ResponseEntity<>(offerDTOList, HttpStatus.OK);
     }
 
-    @GetMapping("/all/sell/{page}/{itemsOnPage}")
-    public ResponseEntity<OfferListDTO> getAllSellOffersToPage(@PathVariable("page") int page, @PathVariable("itemsOnPage") int itemsOnPage){
-        List<OfferDTO> offerDTOList = offerService.getAllSellOffers()
-                .stream()
-                .map(offerFacade::offerToOfferDTO)
-                .collect(Collectors.toList());
-
-        OfferListDTO offerListDTO = new OfferListDTO();
-        offerListDTO.setSize(offerDTOList.size());
-
-        if (offerDTOList.size() > (page-1)*itemsOnPage) {
-            if (offerDTOList.size() >=(page-1)*itemsOnPage + itemsOnPage){
-                offerDTOList = offerDTOList.subList((page-1)*itemsOnPage-1, (page-1)*itemsOnPage + itemsOnPage-1);
-            } else {
-                offerDTOList = offerDTOList.subList((page-1)*itemsOnPage-1, offerDTOList.size()-1);
-            }
-        } else {
-            return new ResponseEntity<>(null, HttpStatus.BAD_REQUEST);
-        }
-
-        offerListDTO.setOffers(offerDTOList);
-
-        return new ResponseEntity<>(offerListDTO, HttpStatus.OK);
-    }
-
     @GetMapping("/all/buy")
     public ResponseEntity<List<OfferDTO>> getAllBuyOffers(){
         List<OfferDTO> offerDTOList = offerService.getAllBuyOffers()
@@ -103,32 +78,6 @@ public class OfferController {
                 .collect(Collectors.toList());
 
         return new ResponseEntity<>(offerDTOList, HttpStatus.OK);
-    }
-
-    @GetMapping("/all/buy/{page}/{itemsOnPage}")
-    public ResponseEntity<OfferListDTO> getAllBuyOffersToPage(@PathVariable("page") int page, @PathVariable("itemsOnPage") int itemsOnPage){
-        System.out.println("page = " + page + " items on page: " + itemsOnPage);
-        List<OfferDTO> offerDTOList = offerService.getAllBuyOffers()
-                .stream()
-                .map(offerFacade::offerToOfferDTO)
-                .collect(Collectors.toList());
-
-        OfferListDTO offerListDTO = new OfferListDTO();
-        offerListDTO.setSize(offerDTOList.size());
-
-        if (offerDTOList.size() > page*itemsOnPage) {
-            if (offerDTOList.size() >=page*itemsOnPage + itemsOnPage){
-                offerDTOList = offerDTOList.subList(page*itemsOnPage, page*itemsOnPage + itemsOnPage);
-            } else {
-                offerDTOList = offerDTOList.subList(page*itemsOnPage, offerDTOList.size());
-            }
-        } else {
-            return new ResponseEntity<>(null, HttpStatus.BAD_REQUEST);
-        }
-
-        offerListDTO.setOffers(offerDTOList);
-
-        return new ResponseEntity<>(offerListDTO, HttpStatus.OK);
     }
 
     @GetMapping("/user/offers")
