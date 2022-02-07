@@ -4,17 +4,14 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="e87fd43f-9eb4-439a-b836-6b5c2ee6a83a" name="Changes" comment="fix#1">
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/dlisaev/cropper/annotations/OnlyPositiveConstraint.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/dlisaev/cropper/validators/OnlyPositiveValidator.java" afterDir="false" />
+    <list default="true" id="e87fd43f-9eb4-439a-b836-6b5c2ee6a83a" name="Changes" comment="fix#2 Offer validation (positive numbers)">
+      <change afterPath="$PROJECT_DIR$/src/test/java/com/dlisaev/cropper/auth/SignInRequestsTest.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/test/java/com/dlisaev/cropper/auth/SignUpRequestsTest.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/test/java/com/dlisaev/cropper/facade/NotificationFacadeTest.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/dlisaev/cropper/controllers/AuthController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/dlisaev/cropper/controllers/AuthController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/dlisaev/cropper/controllers/OfferController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/dlisaev/cropper/controllers/OfferController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/dlisaev/cropper/dto/OfferDTO.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/dlisaev/cropper/dto/OfferDTO.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/dlisaev/cropper/entity/Offer.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/dlisaev/cropper/entity/Offer.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/dlisaev/cropper/repository/CropRepository.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/dlisaev/cropper/repository/CropRepository.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/dlisaev/cropper/repository/NotificationRepository.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/dlisaev/cropper/repository/NotificationRepository.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/dlisaev/cropper/repository/OfferRepository.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/dlisaev/cropper/repository/OfferRepository.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/pom.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/java/com/dlisaev/cropper/CropperApplicationTests.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/com/dlisaev/cropper/CropperApplicationTests.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/test-classes/com/dlisaev/cropper/CropperApplicationTests.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/test-classes/com/dlisaev/cropper/CropperApplicationTests.class" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -28,6 +25,7 @@
         <option value="package-info" />
         <option value="Interface" />
         <option value="AnnotationType" />
+        <option value="JUnit5 Test Class" />
         <option value="Class" />
       </list>
     </option>
@@ -64,20 +62,27 @@
     <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
     <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
+    <property name="com.intellij.testIntegration.createTest.CreateTestDialog.defaultLibrary" value="JUnit5" />
+    <property name="com.intellij.testIntegration.createTest.CreateTestDialog.defaultLibrarySuperClass.JUnit5" value="" />
     <property name="last_opened_file_path" value="$PROJECT_DIR$/../angular/cropper" />
   </component>
   <component name="RecentsManager">
     <key name="CreateClassDialog.RecentsKey">
       <recent name="com.dlisaev.cropper.security.jwt" />
     </key>
+    <key name="CreateTestDialog.Recents.Supers">
+      <recent name="" />
+    </key>
+    <key name="CreateTestDialog.RecentsKey">
+      <recent name="com.dlisaev.cropper.facade" />
+    </key>
     <key name="CopyClassDialog.RECENTS_KEY">
       <recent name="com.dlisaev.cropper.controllers" />
       <recent name="com.dlisaev.cropper.service" />
     </key>
   </component>
-  <component name="RunManager" selected="Application.CropperApplication">
-    <configuration name="CropperApplication" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
-      <option name="MAIN_CLASS_NAME" value="com.dlisaev.cropper.CropperApplication" />
+  <component name="RunManager" selected="JUnit.SignInRequestsTest">
+    <configuration name="CropperApplicationTests" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <module name="cropper" />
       <extension name="coverage">
         <pattern>
@@ -85,6 +90,69 @@
           <option name="ENABLED" value="true" />
         </pattern>
       </extension>
+      <option name="PACKAGE_NAME" value="com.dlisaev.cropper" />
+      <option name="MAIN_CLASS_NAME" value="com.dlisaev.cropper.CropperApplicationTests" />
+      <option name="TEST_OBJECT" value="class" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="NotificationFacadeTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="cropper" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="com.dlisaev.cropper.facade.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="PACKAGE_NAME" value="com.dlisaev.cropper.facade" />
+      <option name="MAIN_CLASS_NAME" value="com.dlisaev.cropper.facade.NotificationFacadeTest" />
+      <option name="TEST_OBJECT" value="class" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="SignInRequestsTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="cropper" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="com.dlisaev.cropper.auth.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="PACKAGE_NAME" value="com.dlisaev.cropper.auth" />
+      <option name="MAIN_CLASS_NAME" value="com.dlisaev.cropper.auth.SignInRequestsTest" />
+      <option name="TEST_OBJECT" value="class" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="SignUpRequestsTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="cropper" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="com.dlisaev.cropper.auth.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="PACKAGE_NAME" value="com.dlisaev.cropper.auth" />
+      <option name="MAIN_CLASS_NAME" value="com.dlisaev.cropper.auth.SignUpRequestsTest" />
+      <option name="TEST_OBJECT" value="class" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="TestingWebApplicationTests" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="cropper" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="com.dlisaev.cropper.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="PACKAGE_NAME" value="com.dlisaev.cropper" />
+      <option name="MAIN_CLASS_NAME" value="com.dlisaev.cropper.TestingWebApplicationTests" />
+      <option name="TEST_OBJECT" value="class" />
       <method v="2">
         <option name="Make" enabled="true" />
       </method>
@@ -98,7 +166,11 @@
     </configuration>
     <recent_temporary>
       <list>
-        <item itemvalue="Application.CropperApplication" />
+        <item itemvalue="JUnit.SignInRequestsTest" />
+        <item itemvalue="JUnit.SignUpRequestsTest" />
+        <item itemvalue="JUnit.CropperApplicationTests" />
+        <item itemvalue="JUnit.TestingWebApplicationTests" />
+        <item itemvalue="JUnit.NotificationFacadeTest" />
       </list>
     </recent_temporary>
   </component>
@@ -163,7 +235,14 @@
       <option name="project" value="LOCAL" />
       <updated>1643983017176</updated>
     </task>
-    <option name="localTasksCounter" value="8" />
+    <task id="LOCAL-00008" summary="fix#2 Offer validation (positive numbers)">
+      <created>1644232335199</created>
+      <option name="number" value="00008" />
+      <option name="presentableId" value="LOCAL-00008" />
+      <option name="project" value="LOCAL" />
+      <updated>1644232335199</updated>
+    </task>
+    <option name="localTasksCounter" value="9" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -188,7 +267,8 @@
     <MESSAGE value="Added services" />
     <MESSAGE value="Finish" />
     <MESSAGE value="fix#1" />
-    <option name="LAST_COMMIT_MESSAGE" value="fix#1" />
+    <MESSAGE value="fix#2 Offer validation (positive numbers)" />
+    <option name="LAST_COMMIT_MESSAGE" value="fix#2 Offer validation (positive numbers)" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
@@ -201,6 +281,11 @@
           <url>file://$PROJECT_DIR$/src/main/java/com/dlisaev/cropper/controllers/OfferController.java</url>
           <line>50</line>
           <option name="timeStamp" value="6" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/test/java/com/dlisaev/cropper/facade/NotificationFacadeTest.java</url>
+          <line>36</line>
+          <option name="timeStamp" value="8" />
         </line-breakpoint>
       </breakpoints>
     </breakpoint-manager>
