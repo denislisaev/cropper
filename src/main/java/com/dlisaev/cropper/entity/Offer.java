@@ -1,5 +1,6 @@
 package com.dlisaev.cropper.entity;
 
+import com.dlisaev.cropper.annotations.OnlyPositiveConstraint;
 import com.fasterxml.jackson.annotation.JsonFormat;
 import lombok.Data;
 
@@ -23,9 +24,11 @@ public class Offer {
     private Boolean typeOffer; // false - продажа, true - покупка
 
     @Column(nullable = true)
+    @OnlyPositiveConstraint
     private Integer volume;
 
     @Column(nullable = true)
+    @OnlyPositiveConstraint
     private Integer pricePerTon; //в рублях
 
     @Column(columnDefinition = "text")

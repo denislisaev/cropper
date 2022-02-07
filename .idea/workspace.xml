@@ -4,13 +4,17 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="e87fd43f-9eb4-439a-b836-6b5c2ee6a83a" name="Changes" comment="Finish">
+    <list default="true" id="e87fd43f-9eb4-439a-b836-6b5c2ee6a83a" name="Changes" comment="fix#1">
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/dlisaev/cropper/annotations/OnlyPositiveConstraint.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/dlisaev/cropper/validators/OnlyPositiveValidator.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/dlisaev/cropper/controllers/AuthController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/dlisaev/cropper/controllers/AuthController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/dlisaev/cropper/controllers/CropController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/dlisaev/cropper/controllers/CropController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/dlisaev/cropper/controllers/NotificationController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/dlisaev/cropper/controllers/NotificationController.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/dlisaev/cropper/controllers/OfferController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/dlisaev/cropper/controllers/OfferController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/dlisaev/cropper/security/WebSecurityConfig.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/dlisaev/cropper/security/WebSecurityConfig.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/dlisaev/cropper/dto/OfferDTO.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/dlisaev/cropper/dto/OfferDTO.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/dlisaev/cropper/entity/Offer.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/dlisaev/cropper/entity/Offer.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/dlisaev/cropper/repository/CropRepository.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/dlisaev/cropper/repository/CropRepository.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/dlisaev/cropper/repository/NotificationRepository.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/dlisaev/cropper/repository/NotificationRepository.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/dlisaev/cropper/repository/OfferRepository.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/dlisaev/cropper/repository/OfferRepository.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -22,8 +26,8 @@
       <list>
         <option value="Enum" />
         <option value="package-info" />
-        <option value="AnnotationType" />
         <option value="Interface" />
+        <option value="AnnotationType" />
         <option value="Class" />
       </list>
     </option>
@@ -152,7 +156,14 @@
       <option name="project" value="LOCAL" />
       <updated>1643905845355</updated>
     </task>
-    <option name="localTasksCounter" value="7" />
+    <task id="LOCAL-00007" summary="fix#1">
+      <created>1643983017175</created>
+      <option name="number" value="00007" />
+      <option name="presentableId" value="LOCAL-00007" />
+      <option name="project" value="LOCAL" />
+      <updated>1643983017176</updated>
+    </task>
+    <option name="localTasksCounter" value="8" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -176,7 +187,8 @@
     <MESSAGE value="Auth controller" />
     <MESSAGE value="Added services" />
     <MESSAGE value="Finish" />
-    <option name="LAST_COMMIT_MESSAGE" value="Finish" />
+    <MESSAGE value="fix#1" />
+    <option name="LAST_COMMIT_MESSAGE" value="fix#1" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
@@ -185,6 +197,11 @@
           <properties class="java.lang.StackOverflowError" package="java.lang" />
           <option name="timeStamp" value="1" />
         </breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/main/java/com/dlisaev/cropper/controllers/OfferController.java</url>
+          <line>50</line>
+          <option name="timeStamp" value="6" />
+        </line-breakpoint>
       </breakpoints>
     </breakpoint-manager>
   </component>

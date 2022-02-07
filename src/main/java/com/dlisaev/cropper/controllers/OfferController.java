@@ -42,11 +42,20 @@ public class OfferController {
     public ResponseEntity<Object> createOffer (@Valid @RequestBody OfferDTO offerDTO, BindingResult bindingResult, Principal principal){
         ResponseEntity<Object> listErrors = responseErrorValidator.mappedValidatorService(bindingResult);
         if (!ObjectUtils.isEmpty(listErrors)) return listErrors;
-
-        Offer offer = offerService.createOffer(offerDTO, principal);
-        OfferDTO  offerCreated = offerFacade.offerToOfferDTO(offer);
-
-        return new ResponseEntity<>(offerCreated, HttpStatus.OK);
+        try {
+            Offer offer = offerService.createOffer(offerDTO, principal);
+            OfferDTO offerCreated = offerFacade.offerToOfferDTO(offer);
+            return new ResponseEntity<>(offerCreated, HttpStatus.OK);
+        } catch(Exception e){
+            if (e.getMessage().contains("Value is negative!")){
+                if (e.getMessage().contains("volume")){
+                    return new ResponseEntity<>(new MessageResponse("Значение объема не может быть отрицательным!"), HttpStatus.BAD_REQUEST);
+                } else if (e.getMessage().contains("pricePerTon")){
+                    return new ResponseEntity<>(new MessageResponse("Значение цены не может быть отрицательным!"), HttpStatus.BAD_REQUEST);
+                }
+            }
+            return new ResponseEntity<>(new MessageResponse("Ошибка при создании оффера!"), HttpStatus.BAD_REQUEST);
+        }
     }
 
 
@@ -110,9 +119,19 @@ public class OfferController {
         ResponseEntity<Object> listErrors = responseErrorValidator.mappedValidatorService(bindingResult);
         if (!ObjectUtils.isEmpty(listErrors)) return listErrors;
 
-        Offer offer = offerService.updateOffer(offerDTO, Long.valueOf(offerId), principal);
-        OfferDTO  offerUpdated= offerFacade.offerToOfferDTO(offer);
-
-        return new ResponseEntity<>(offerUpdated, HttpStatus.OK);
+        try {
+            Offer offer = offerService.updateOffer(offerDTO, Long.valueOf(offerId), principal);
+            OfferDTO  offerUpdated= offerFacade.offerToOfferDTO(offer);
+            return new ResponseEntity<>(offerUpdated, HttpStatus.OK);
+        } catch(Exception e){
+            if (e.getMessage().contains("Value is negative!")){
+                if (e.getMessage().contains("volume")){
+                    return new ResponseEntity<>(new MessageResponse("Значение объема не может быть отрицательным!"), HttpStatus.BAD_REQUEST);
+                } else if (e.getMessage().contains("pricePerTon")){
+                    return new ResponseEntity<>(new MessageResponse("Значение цены не может быть отрицательным!"), HttpStatus.BAD_REQUEST);
+                }
+            }
+            return new ResponseEntity<>(new MessageResponse("Ошибка при обновлении оффера!"), HttpStatus.BAD_REQUEST);
+        }
     }
 }

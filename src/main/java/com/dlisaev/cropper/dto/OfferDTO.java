@@ -1,5 +1,6 @@
 package com.dlisaev.cropper.dto;
 
+import com.dlisaev.cropper.annotations.OnlyPositiveConstraint;
 import lombok.Data;
 import lombok.NonNull;
 

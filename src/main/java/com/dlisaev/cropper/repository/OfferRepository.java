@@ -15,9 +15,5 @@ public interface OfferRepository extends JpaRepository<Offer, Long> {
     Optional<Offer> findOfferByIdAndUser(Long id, User user);
     List<Offer> findAllByOrderByCreateDate();
     List<Offer> findAllByUserOrderByCreateDate(User user);
-    List<Offer> findAllByUserAndTypeOfferOrderByCreateDate(User user, Boolean typeOffer);
-    List<Offer> findAllByCropOrderByCreateDate(Crop crop);
-    List<Offer> findAllByCropAndTypeOfferOrderByCreateDate(Crop crop, Boolean typeOffer);
     List<Offer> findAllByTypeOfferOrderByCreateDate(Boolean typeOffer);
-    List<Offer> findAllByTypeOfferOrderByCreateDateDesc(Boolean typeOffer);
 }

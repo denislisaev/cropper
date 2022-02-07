@@ -51,14 +51,14 @@ public class AuthController {
         try{
             userService.createUser(signUpRequest);
         } catch (UserAlreadyException e){
-            String responce = "";
+            String response = "";
             if (e.isEmailUsed() ){
-                responce += "Email уже занят \n";
+                response += "Email уже занят \n";
             }
             if (e.isUsernameUsed()){
-                responce += "Логин уже занят \n";
+                response += "Логин уже занят \n";
             }
-            return new ResponseEntity<>(new MessageResponse(responce), HttpStatus.BAD_REQUEST);
+            return new ResponseEntity<>(new MessageResponse(response), HttpStatus.BAD_REQUEST);
         }
 
         return ResponseEntity.ok(new MessageResponse("Регистрация успешно завершена"));
