@@ -4,9 +4,11 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="e87fd43f-9eb4-439a-b836-6b5c2ee6a83a" name="Changes" comment="Add logging">
+    <list default="true" id="e87fd43f-9eb4-439a-b836-6b5c2ee6a83a" name="Changes" comment="fix 3">
+      <change afterPath="$PROJECT_DIR$/system.properties" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/resources/application.properties" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/application.properties" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/application.properties" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/application.properties" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -78,6 +80,9 @@
   </component>
   <component name="RunManager" selected="Application.CropperApplication">
     <configuration name="CropperApplication" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <envs>
+        <env name="CLEARDB_DATABASE_URL" value="mysql://ba6055c7ef5c74:80abc33a@eu-cdbr-west-02.cleardb.net/heroku_2ab85869bf121d8? useUnicode=true&amp; characterEncoding=utf-8&amp; reconnect=true" />
+      </envs>
       <option name="MAIN_CLASS_NAME" value="com.dlisaev.cropper.CropperApplication" />
       <module name="cropper" />
       <extension name="coverage">
@@ -157,6 +162,13 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
+    <list>
+      <item itemvalue="Application.CropperApplication" />
+      <item itemvalue="JUnit.CropperApplicationTests" />
+      <item itemvalue="JUnit.SignInRequestsTest" />
+      <item itemvalue="JUnit.SignUpRequestsTest" />
+      <item itemvalue="JUnit.TestingWebApplicationTests" />
+    </list>
     <recent_temporary>
       <list>
         <item itemvalue="Application.CropperApplication" />
@@ -249,7 +261,14 @@
       <option name="project" value="LOCAL" />
       <updated>1644330248374</updated>
     </task>
-    <option name="localTasksCounter" value="11" />
+    <task id="LOCAL-00011" summary="fix 3">
+      <created>1644332586758</created>
+      <option name="number" value="00011" />
+      <option name="presentableId" value="LOCAL-00011" />
+      <option name="project" value="LOCAL" />
+      <updated>1644332586758</updated>
+    </task>
+    <option name="localTasksCounter" value="12" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -277,7 +296,8 @@
     <MESSAGE value="fix#2 Offer validation (positive numbers)" />
     <MESSAGE value="add junit tests" />
     <MESSAGE value="Add logging" />
-    <option name="LAST_COMMIT_MESSAGE" value="Add logging" />
+    <MESSAGE value="fix 3" />
+    <option name="LAST_COMMIT_MESSAGE" value="fix 3" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
