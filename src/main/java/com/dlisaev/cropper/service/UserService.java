@@ -55,35 +55,71 @@ public class UserService implements UserServiceInterface {
     }
 
     public User updateUser(UserDTO userDTO, Principal principal){
+        LOG.debug("Update user {}", userDTO.getUsername());
         User user = getUserByPrincipal(principal);
         user.setFirstname(userDTO.getFirstname());
         user.setLastname(userDTO.getLastname());
         user.setLocation(userDTO.getLocation());
 
-        return userRepository.save(user);
+        try {
+            return userRepository.save(user);
+        } catch (Exception e){
+            LOG.error("User {} has not updated", user.getUsername());
+        }
+        return null;
     }
 
 
     public User getUserByPrincipal(Principal principal){
         String username = principal.getName();
-        return userRepository.findUserByUsername(username)
-                .orElseThrow(() -> new UsernameNotFoundException("Пользователь не найден" + username));
+        LOG.debug("Find user {} by principal", username);
+        try {
+            return userRepository.findUserByUsername(username)
+                    .orElseThrow(() -> new UsernameNotFoundException("Пользователь не найден" + username));
+        } catch (UsernameNotFoundException e){
+            LOG.error(e.getMessage());
+        }
+        return null;
     }
 
     public User getCurrentUser(Principal principal){
-        return getUserByPrincipal(principal);
+        try {
+            LOG.debug("Get current user");
+            return getUserByPrincipal(principal);
+        } catch (Exception e){
+            LOG.error("Error! Can`t get current user");
+        }
+        return null;
     }
 
     public User getUserById(Long userId){
-        return userRepository.findUserById(userId).orElseThrow(()-> new UsernameNotFoundException("Пользователь не найден"));
+        try {
+            LOG.debug("Get user by id: " + userId);
+            return userRepository.findUserById(userId).orElseThrow(() -> new UsernameNotFoundException("Пользователь не найден"));
+        } catch (UsernameNotFoundException e){
+            LOG.error(e.getMessage());
+        }
+        return null;
     }
 
     public void deleteUserByUsername(String username){
-        User user =  userRepository.findUserByUsername(username).orElseThrow(()-> new UsernameNotFoundException("Пользователь не найден"));
-        userRepository.delete(user);
+        LOG.info("Delete user: " + username);
+        try {
+            User user = userRepository.findUserByUsername(username).orElseThrow(() -> new UsernameNotFoundException("Пользователь не найден"));
+            userRepository.delete(user);
+        } catch (UsernameNotFoundException e){
+            LOG.error(e.getMessage());
+        } catch (Exception e) {
+            LOG.error("Error! Can`t delete user: " + username);
+        }
     }
 
     public List<User> getUsers(){
-        return userRepository.findAll();
+        try {
+            return userRepository.findAll();
+        } catch (Exception e){
+            LOG.error("Can`t get all users");
+        }
+        return null;
     }
 }

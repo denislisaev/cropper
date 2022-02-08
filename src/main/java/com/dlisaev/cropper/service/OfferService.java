@@ -1,6 +1,7 @@
 package com.dlisaev.cropper.service;
 
 import com.dlisaev.cropper.dto.OfferDTO;
+import com.dlisaev.cropper.entity.Crop;
 import com.dlisaev.cropper.entity.Offer;
 import com.dlisaev.cropper.entity.User;
 import com.dlisaev.cropper.exceptions.CropNotFoundException;
@@ -34,82 +35,143 @@ public class OfferService implements OfferServiceInterface {
     }
 
     public List<Offer> getAllOffers(){
+        LOG.debug("Get all offers");
         return offerRepository.findAllByOrderByCreateDate();
     }
 
     public List<Offer> getAllSellOffers(){
+        LOG.debug("Get all sell offers");
         return offerRepository.findAllByTypeOfferOrderByCreateDate(false);
     }
 
     public List<Offer> getAllBuyOffers(){
+
+        LOG.debug("Get all buy offers");
         return offerRepository.findAllByTypeOfferOrderByCreateDate(true);
     }
 
     public Offer getOfferById(Long offerId, Principal principal){
         User user = getUserByPrincipal(principal);
-        return offerRepository.findOfferByIdAndUser(offerId, user)
-                .orElseThrow(()-> new OfferNotFoundException("Offer not found for username: " + user.getEmail()));
+        try {
+            LOG.debug("Get offer by id: " + offerId + " for user: " + user.getUsername());
+            return offerRepository.findOfferByIdAndUser(offerId, user)
+                    .orElseThrow(() -> new OfferNotFoundException("Offer not found for username: " + user.getUsername()));
+        } catch (OfferNotFoundException e){
+            LOG.error(e.getMessage());
+        }
+        return null;
     }
 
     public Offer getOfferByIdAdmin(Long offerId){
-        return offerRepository.findOfferById(offerId)
-                .orElseThrow(()-> new OfferNotFoundException("Offer not found for id: " + offerId));
+        try{
+            LOG.debug("(ADMIN) Get offer by id: " + offerId);
+            return offerRepository.findOfferById(offerId)
+                    .orElseThrow(()-> new OfferNotFoundException("Offer not found for id: " + offerId));
+        } catch (OfferNotFoundException e){
+            LOG.error(e.getMessage());
+        }
+        return null;
     }
 
     public List<Offer> getAllOffersForUser(Principal principal){
         User user = getUserByPrincipal(principal);
-        return offerRepository.findAllByUserOrderByCreateDate(user);
+        try{
+            LOG.debug("Get all offers for user: " + user.getUsername());
+            return offerRepository.findAllByUserOrderByCreateDate(user);
+        } catch (Exception e){
+            LOG.error("Offers for user: " + user.getUsername() + " not found");
+        }
+        return null;
     }
 
     public List<Offer> getAllOffersForUsername(String username){
-        User user = userRepository.findUserByUsername(username).orElseThrow(()->new UsernameNotFoundException("User with username " + username + " not found"));
-        return offerRepository.findAllByUserOrderByCreateDate(user);
+        try {
+            LOG.debug("Get all offers for username: " +  username);
+            User user = userRepository.findUserByUsername(username).orElseThrow(() -> new UsernameNotFoundException("User with username " + username + " not found"));
+            return offerRepository.findAllByUserOrderByCreateDate(user);
+        } catch (UsernameNotFoundException e){
+            LOG.error(e.getMessage());
+        } catch (Exception e){
+            LOG.error("Offers for username: " + username + " not found");
+        }
+        return null;
     }
 
     public Offer createOffer(OfferDTO offerDto, Principal principal){
         User user = getUserByPrincipal(principal);
         Offer offer = new Offer();
 
-        offer.setUser(user);
-        offer.setCrop(cropRepository.findCropByName(offerDto.getCrop())
-                .orElseThrow(() -> new CropNotFoundException("Crop not found with name: " + offerDto.getCrop())));
-        offer.setTypeOffer(offerDto.getTypeOffer());
-        offer.setVolume(offerDto.getVolume());
-        offer.setPricePerTon(offerDto.getPricePerTon());
-        offer.setInfo(offerDto.getInfo());
+        try {
+            offer.setUser(user);
+            offer.setCrop(cropRepository.findCropByName(offerDto.getCrop())
+                    .orElseThrow(() -> new CropNotFoundException("Crop not found with name: " + offerDto.getCrop())));
+            offer.setTypeOffer(offerDto.getTypeOffer());
+            offer.setVolume(offerDto.getVolume());
+            offer.setPricePerTon(offerDto.getPricePerTon());
+            offer.setInfo(offerDto.getInfo());
 
-        LOG.info("Create new offer for user: {}", user.getEmail());
-        return offerRepository.save(offer);
+            LOG.info("Create new offer for user: {}", user.getEmail());
+            return offerRepository.save(offer);
+        } catch (CropNotFoundException e){
+            LOG.error(e.getMessage());
+        } catch (Exception e){
+            LOG.error("Offer has not created");
+        }
+        return null;
     }
 
     public Offer updateOffer(OfferDTO offerDTO, Long offerId, Principal principal){
-        User user = getUserByPrincipal(principal);
-        Offer offer = offerRepository.findOfferByIdAndUser(offerId, user)
-                .orElseThrow(() -> new OfferNotFoundException("Offer not found with id: " + offerId));
-        offer.setTypeOffer(offerDTO.getTypeOffer());
-        offer.setInfo(offerDTO.getInfo());
-        offer.setCrop(cropRepository.findCropByName(offerDTO.getCrop())
-                .orElseThrow(() -> new CropNotFoundException("Crop not found with name: " + offerDTO.getCrop())));
-        offer.setVolume(offerDTO.getVolume());
-        offer.setPricePerTon(offerDTO.getPricePerTon());
+        try {
+            User user = getUserByPrincipal(principal);
+            Offer offer = offerRepository.findOfferByIdAndUser(offerId, user)
+                    .orElseThrow(() -> new OfferNotFoundException("Offer not found with id: " + offerId));
+            offer.setTypeOffer(offerDTO.getTypeOffer());
+            offer.setInfo(offerDTO.getInfo());
+            offer.setCrop(cropRepository.findCropByName(offerDTO.getCrop())
+                    .orElseThrow(() -> new CropNotFoundException("Crop not found with name: " + offerDTO.getCrop())));
+            offer.setVolume(offerDTO.getVolume());
+            offer.setPricePerTon(offerDTO.getPricePerTon());
 
-        return offerRepository.save(offer);
+            LOG.info("Update offer with ID: {}",offerId);
+
+            return offerRepository.save(offer);
+        } catch (CropNotFoundException | OfferNotFoundException e) {
+            LOG.error(e.getMessage());
+        } catch (Exception e){
+            LOG.error("Offer has not updated");
+        }
+        return null;
     }
 
     public void deleteOffer(Long offerId, Principal principal){
+        LOG.info("Delete offer with ID: {}",offerId);
         Offer offer = getOfferById(offerId, principal);
-        offerRepository.delete(offer);
+        try {
+            offerRepository.delete(offer);
+        } catch (Exception e){
+            LOG.error("Offer with id {} has not deleted", offerId);
+        }
     }
 
 
     public User getUserByPrincipal(Principal principal){
-        String username = principal.getName();
-        return userRepository.findUserByUsername(username)
-                .orElseThrow(() -> new UsernameNotFoundException("User not found with username: " + username));
+        try {
+            String username = principal.getName();
+            return userRepository.findUserByUsername(username)
+                    .orElseThrow(() -> new UsernameNotFoundException("User not found with username: " + username));
+        } catch (Exception e){
+            LOG.error("User not found by principal");
+        }
+        return null;
     }
 
     public void deleteOfferAdmin(long offerId) {
+        LOG.info("(ADMIN) Delete offer with ID: {}",offerId);
         Offer offer = getOfferByIdAdmin(offerId);
-        offerRepository.delete(offer);
+        try {
+            offerRepository.delete(offer);
+        } catch (Exception e){
+            LOG.error("Offer with id {} has not deleted", offerId);
+        }
     }
 }

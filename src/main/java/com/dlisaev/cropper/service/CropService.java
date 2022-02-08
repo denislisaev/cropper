@@ -44,8 +44,14 @@ public class CropService implements CropServiceInterface {
 
 
     public void deletCrop(Long cropId){
-        Crop crop = cropRepository.getById(cropId);
-        cropRepository.delete(crop);
+        if (cropRepository.findCropById(cropId).isEmpty()) {
+            Crop crop = cropRepository.getById(cropId);
+            cropRepository.delete(crop);
+            LOG.info("Delete crop with ID = {}", crop);
+        } else {
+            LOG.error("Crop already exist! with ID: " + cropId);
+            throw new CropAlreadyExist("Crop already exist! with ID: " + cropId);
+        }
     }
 
 }
