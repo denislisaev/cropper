@@ -4,17 +4,9 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="e87fd43f-9eb4-439a-b836-6b5c2ee6a83a" name="Changes" comment="add junit tests">
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/dlisaev/cropper/exceptions/UserIdNotFoundException.java" afterDir="false" />
+    <list default="true" id="e87fd43f-9eb4-439a-b836-6b5c2ee6a83a" name="Changes" comment="Add logging">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/dlisaev/cropper/repository/CropRepository.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/dlisaev/cropper/repository/CropRepository.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/dlisaev/cropper/service/ConfigUserDetailsService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/dlisaev/cropper/service/ConfigUserDetailsService.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/dlisaev/cropper/service/CropService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/dlisaev/cropper/service/CropService.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/dlisaev/cropper/service/NotificationService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/dlisaev/cropper/service/NotificationService.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/dlisaev/cropper/service/OfferService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/dlisaev/cropper/service/OfferService.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/dlisaev/cropper/service/UserService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/dlisaev/cropper/service/UserService.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/resources/application.properties" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/application.properties" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/application.properties" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/application.properties" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -250,7 +242,14 @@
       <option name="project" value="LOCAL" />
       <updated>1644252038091</updated>
     </task>
-    <option name="localTasksCounter" value="10" />
+    <task id="LOCAL-00010" summary="Add logging">
+      <created>1644330248374</created>
+      <option name="number" value="00010" />
+      <option name="presentableId" value="LOCAL-00010" />
+      <option name="project" value="LOCAL" />
+      <updated>1644330248374</updated>
+    </task>
+    <option name="localTasksCounter" value="11" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -277,7 +276,8 @@
     <MESSAGE value="fix#1" />
     <MESSAGE value="fix#2 Offer validation (positive numbers)" />
     <MESSAGE value="add junit tests" />
-    <option name="LAST_COMMIT_MESSAGE" value="add junit tests" />
+    <MESSAGE value="Add logging" />
+    <option name="LAST_COMMIT_MESSAGE" value="Add logging" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
